@@ -3,7 +3,7 @@ if(COMMAND cmake_policy)
     cmake_policy(VERSION 2.6)
 endif(COMMAND cmake_policy)
 
-project( tmux-mem-cpu-load )
+project( tmux-mem-cpu-load CXX)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING
