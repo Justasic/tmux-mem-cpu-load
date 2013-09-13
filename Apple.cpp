@@ -94,10 +94,26 @@ std::string load_string()
 	return ss.str();
 }
 
+// Internal function
+static inline host_cpu_load_info_data_t _get_cpu_percentage()
+{
+    kern_return_t              error;
+    mach_msg_type_number_t     count;
+    host_cpu_load_info_data_t  r_load;
+    mach_port_t                mach_port;
+
+    count = HOST_CPU_LOAD_INFO_COUNT;
+    mach_port       = mach_host_self();
+    error = host_statistics(mach_port, HOST_CPU_LOAD_INFO, (host_info_t)&r_load, &count);
+    if (error != KERN_SUCCESS)
+        return host_cpu_load_info_data_t();
+
+    return r_load;
+}
 
 float cpu_percentage( unsigned int cpu_usage_delay )
 {
-    Get the load times from the XNU kernel
+    // Get the load times from the XNU kernel
     host_cpu_load_info_data_t load1 = _get_cpu_percentage();
     usleep(cpu_usage_delay);
     host_cpu_load_info_data_t load2 = _get_cpu_percentage();

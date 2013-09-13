@@ -17,6 +17,7 @@
 // Based on: https://github.com/freebsd/freebsd/blob/master/usr.bin/top/machine.c
 // Based on: Apple.cpp for load_string/mem_string and apple's documentation
 
+#error ToDo: OpenBSD. This file is incomplete and likely will not compile if you remove this error (it is here to tell you it's unfinished)
 
 #include <unistd.h>
 #include <iostream>
