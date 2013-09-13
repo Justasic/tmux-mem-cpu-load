@@ -29,7 +29,7 @@ endif (${CMAKE_SYSTEM_NAME} STREQUAL OpenBSD OR ${CMAKE_SYSTEM_NAME} STREQUAL Ne
 # We're on linux
 if (${CMAKE_SYSTEM_NAME} STREQUAL Linux)
     set(PLATFORM_SOURCE Linux.cpp)
-endif (${CMAKE_SYSTEM_NAME} STREQUAL FreeBSD)
+endif (${CMAKE_SYSTEM_NAME} STREQUAL Linux)
 
 add_executable(tmux-mem-cpu-load tmux-mem-cpu-load.cpp ${PLATFORM_SOURCE})
 install(TARGETS tmux-mem-cpu-load
