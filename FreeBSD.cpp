@@ -109,10 +109,11 @@ std::string mem_string()
     GETSYSCTL("vm.stats.vm.v_inactive_count", inactive_mem);
     GETSYSCTL("vm.stats.vm.v_cache_count", cache_mem);
     GETSYSCTL("vm.stats.vm.v_wire_count", wired_mem);
+    GETSYSCTL("vm.stats.vm.v_active_count", active_mem);
 
     // Get all memory which can be allocated
-    //unused_mem = (inactive_mem + cache_mem + free_mem) * page_size;
-    used_mem   = ((int64_t)active_mem + (int64_t)wired_mem + (int64_t)inactive_mem) * (int64_t)page_size;
+    //unused_mem = (cache_mem + free_mem) * page_size;
+    used_mem   = ((int64_t)active_mem + (int64_t)inactive_mem + (int64_t)wired_mem) * (int64_t)page_size;
 
     oss << MEGABYTES(used_mem) << '/' << MEGABYTES(total_mem) << "MB";
 
